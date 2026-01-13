@@ -1,0 +1,5 @@
+SUPABASE_URL = "https://frqxurjawopvilbngjji.supabase.co"
+SUPABASE_KEY = "sb_publishable_lsQ2oVU-mDoJOL8nzNgW_g_rTJr7y67"
+GITHUB_REPO = "https://github.com/EEEEEEETETETETASD/projectzozfil"
+OWNER_USERNAME = "Owner"
+OWNER_PASSWORD = "$6vC9vp4d$"
