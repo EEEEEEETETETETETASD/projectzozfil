@@ -10,6 +10,7 @@ PADDLE_WIDTH = 10
 PADDLE_HEIGHT = 100
 BALL_SIZE = 10
 PADDLE_SPEED = 5
+CPU_SPEED = 3
 BALL_SPEED = 5
 
 class PongGame:
@@ -31,10 +32,11 @@ class PongGame:
         self.score2 = 0
 
     def ai_move(self):
-        if self.ball.centery < self.paddle2.centery:
-            self.paddle2.y -= PADDLE_SPEED
-        elif self.ball.centery > self.paddle2.centery:
-            self.paddle2.y += PADDLE_SPEED
+        if abs(self.ball.centery - self.paddle2.centery) > 20:  # Tolerance
+            if self.ball.centery < self.paddle2.centery:
+                self.paddle2.y -= CPU_SPEED
+            elif self.ball.centery > self.paddle2.centery:
+                self.paddle2.y += CPU_SPEED
         self.paddle2.clamp_ip(pygame.Rect(0, 0, WIDTH, HEIGHT))
 
     def update(self):

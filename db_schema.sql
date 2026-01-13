@@ -57,3 +57,12 @@ CREATE TABLE game_sessions (
     state JSONB,
     status VARCHAR(20) DEFAULT 'waiting' CHECK (status IN ('waiting', 'playing', 'finished'))
 );
+
+-- Insert initial items
+INSERT INTO items (name, type, price, status, rarity) VALUES
+('Red Paddle Skin', 'cosmetic', 50, 'available', 'common'),
+('Blue Ball', 'cosmetic', 75, 'available', 'common'),
+('Golden Paddle', 'cosmetic', 150, 'available', 'rare'),
+('Rainbow Ball', 'cosmetic', 200, 'available', 'epic'),
+('Speed Boost', 'boost', 100, 'available', 'rare'),
+('VIP Membership', 'vip', 500, 'available', 'epic');

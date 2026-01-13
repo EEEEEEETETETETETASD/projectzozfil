@@ -43,7 +43,7 @@ def buy_item():
     # Buy logic
     item = supabase.table('shop_items').select('*').eq('id', item_id).single().execute().data
     profile = supabase.table('profiles').select('*').eq('id', user_id).single().execute().data
-    if profile['currency'] &gt;= item['price'] and item['status'] == 'available':
+    if profile['currency'] >= item['price'] and item['status'] == 'available':
         new_currency = profile['currency'] - item['price']
         inventory = profile['inventory'] + [item['name']]
         supabase.table('profiles').update({'currency': new_currency, 'inventory': json.dumps(inventory)}).eq('id', user_id).execute()
