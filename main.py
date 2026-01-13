@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import tkinter.ttk as ttk
 from auth import signup, login
 from db import update_user_currency, get_shop_refresh, set_shop_refresh, get_all_items, get_item, add_user_item, get_user_items, update_item_status, get_user
 from games.pong import PongGame
@@ -19,14 +20,14 @@ class GameApp:
 
     def show_login(self):
         self.clear_window()
-        tk.Label(self.root, text="Username:").pack()
+        ttk.Label(self.root, text="Username:").pack()
         self.username_entry = tk.Entry(self.root)
         self.username_entry.pack()
-        tk.Label(self.root, text="Password:").pack()
+        ttk.Label(self.root, text="Password:").pack()
         self.password_entry = tk.Entry(self.root, show="*")
         self.password_entry.pack()
-        tk.Button(self.root, text="Login", command=self.do_login).pack()
-        tk.Button(self.root, text="Signup", command=self.do_signup).pack()
+        ttk.Button(self.root, text="Login", command=self.do_login).pack()
+        ttk.Button(self.root, text="Signup", command=self.do_signup).pack()
 
     def do_login(self):
         username = self.username_entry.get()
@@ -49,15 +50,15 @@ class GameApp:
 
     def show_menu(self):
         self.clear_window()
-        tk.Label(self.root, text=f"Welcome {self.user['username']}\nCurrency: {self.user['currency']}").pack()
-        tk.Button(self.root, text="Play Pong", command=self.play_pong).pack()
-        tk.Button(self.root, text="Play RPS", command=self.play_rps).pack()
-        tk.Button(self.root, text="Play Tic-Tac-Toe", command=self.play_tictactoe).pack()
-        tk.Button(self.root, text="Shop", command=self.show_shop).pack()
-        tk.Button(self.root, text="Inventory", command=self.show_inventory).pack()
+        ttk.Label(self.root, text=f"Welcome {self.user['username']}\nCurrency: {self.user['currency']}").pack()
+        ttk.Button(self.root, text="Play Pong", command=self.play_pong).pack()
+        ttk.Button(self.root, text="Play RPS", command=self.play_rps).pack()
+        ttk.Button(self.root, text="Play Tic-Tac-Toe", command=self.play_tictactoe).pack()
+        ttk.Button(self.root, text="Shop", command=self.show_shop).pack()
+        ttk.Button(self.root, text="Inventory", command=self.show_inventory).pack()
         if self.user['username'] == "Owner":
-            tk.Button(self.root, text="Owner Panel", command=self.show_owner_panel).pack()
-        tk.Button(self.root, text="Logout", command=self.show_login).pack()
+            ttk.Button(self.root, text="Owner Panel", command=self.show_owner_panel).pack()
+        ttk.Button(self.root, text="Logout", command=self.show_login).pack()
 
     def play_pong(self):
         game = PongGame()
@@ -182,5 +183,9 @@ class GameApp:
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("Arcade Game")
+    root.configure(bg='#2E2E2E')
+    style = ttk.Style()
+    style.configure('TButton', font=('Arial', 10), padding=5)
+    style.configure('TLabel', font=('Arial', 12), background='#2E2E2E', foreground='white')
     app = GameApp(root)
     root.mainloop()
